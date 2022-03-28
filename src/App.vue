@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-4">
-    <h1 class="text-center mt-5 mb-5">Listado de Canciones</h1>
+    <h1 class="text-center mt-5 mb-5">Busca-Canciones</h1>
     <div class="row mt-5">
       <div class="formu col-4">
         <form @submit.prevent="submit">
@@ -20,7 +20,7 @@
       </div>
       </div>
           </div>
-          <button class="btn btn-secondary">Buscar Canción</button>
+          <button class="btn">Buscar Canción</button>
         </form>
       
       </div>
@@ -31,10 +31,10 @@
       
       </div>-->
 
-<div class="result" v-for="letra of letras" :key="letra">
+      <div class="result">
         <h2 class="text-center mb-2">{{artista}}</h2>
          <h2 class="text-center mb-2">{{cancion}}</h2>
-        <div class="mt-4">{{letras}}</div>
+        <div class="mt-4">{{letra}}</div>
       </div>
 
     </div>
@@ -61,7 +61,8 @@ export default {
       //consumirCanciones(this.artista, this.cancion).then( letra => console.log(letra.lyrics));
       // 2 Ejemplo
       const letra = await consumirCanciones(this.artista, this.cancion);
-      //console.log(letraCancion);
+      this.letra = letra.lyrics;
+      console.log(letra.lyrics);
       
     },
     
@@ -71,18 +72,49 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Space+Grotesk:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Space+Grotesk:wght@300&display=swap');
+
+
 
 
 h1 {
-  font-family: 'Indie Flower', cursive;
-  color: black;
+  font-family: 'Chakra Petch', sans-serif;
+  color: rgb(91, 91, 91);
   font-size: 60px;
 }
 
-.form {
+label {
+  font-size: 22px;
+}
+input {
+  border: 1px solid #e6a9e6;
+}
+.card {
+  margin-top: 5px;
+  background: #a7baff;
+  border: 1px solid #e6a9e6;
+  font-size: 5px;
+}
+h6 {
+
+  color: white;
+}
+
+.formu {
   font-family: 'Space Grotesk', sans-serif;
 
+}
+
+.btn {
+  background: #e6a9e6;
+  box-shadow: 0 0px 10px 0 rgba(0,0,0,0.4);
+  color: black;
+  border: 1px solid #93cb8d;
+}
+
+.result {
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 50px;
 }
 </style>
 
